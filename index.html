@@ -8,237 +8,220 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <div class="h-[132rem] bg-[#03012dff] p-4">
-      <nav class="flex justify-between">
-        <div class=""><img src="./assets/images/logo.svg" alt="" /></div>
-        <div class="border-2 w-fit flex bg-[#3d3b5eff] gap-2 p-2">
-          <img src="./assets/images/icon-units.svg" alt="" />
-          <select name="" id="" class="text-white bg-[#3d3b5eff]">
-            <option value="unit">Unit</option>
+    <div class="min-h-screen bg-[#03012dff] p-4 md:p-8 lg:p-16">
+      <nav class="flex sm:flex-row justify-between items-center mb-4">
+        <div class="mb-2 sm:mb-0"><img src="./assets/images/logo.svg" alt="Logo" class="h-8 w-auto" /></div>
+        <div class="border-2 w-fit flex bg-[#3d3b5eff] gap-2 p-2 rounded-md">
+          <img src="./assets/images/icon-units.svg" alt="Units" class="h-4 w-4" />
+          <select name="units" id="units" class="text-white bg-[#3d3b5eff] text-sm">
             <option value="celsius">Celsius</option>
             <option value="fahrenheit">Fahrenheit</option>
           </select>
         </div>
       </nav>
-      <h1 class="text-white font-bold text-4xl text-center pt-4">
-        How's the sky looking today ?
+      <h1 class="text-white font-bold text-2xl sm:text-3xl md:text-4xl text-center py-4">
+        How's the sky looking today?
       </h1>
-      <div class="mt-4 p-2">
-        <div class="flex gap-4 p-2 h-[3rem] bg-[#3d3b5eff] rounded-md">
-          <div class="flex justify-center">
-            <img src="./assets/images/icon-search.svg" alt="" />
+      <div class="mt-4 flex flex-col md:flex-row gap-2 md:gap-4 justify-center items-center">
+        <div class="flex gap-2 p-2 h-12 bg-[#3d3b5eff] rounded-md w-full md:w-[30rem] ">
+          <div class="flex justify-center items-center">
+            <img src="./assets/images/icon-search.svg" alt="Search" class="h-5 w-5" />
           </div>
           <input
             type="text"
             placeholder="Search for a place..."
-            class="h-8 flex-1 p-2 text-white" />
+            id="search-input"
+            class="h-full flex-1 p-2 text-white bg-transparent outline-none" />
         </div>
-        <div class="h-[3rem]">
-          <button
-            class="w-full text-white bg-[#4455daff] h-[3rem] text-center rounded-md mt-2">
-            Search
-          </button>
-        </div>
+        <button
+          id="search-button"
+          class="w-full md:w-[8rem] text-white bg-[#4455daff] h-12 px-4 rounded-md mt-2 md:mt-0">
+          Search
+        </button>
       </div>
-      <div class="h-[15rem] rounded-md mt-2 relative">
+      <div class="h-48 md:h-64 rounded-md mt-4 relative md:w-[40rem] overflow-hidden">
         <img
           src="./assets/images/bg-today-small.svg"
-          alt=""
-          class="h-[inherit] w-full" />
+          alt="Background"
+          class="h-full w-full object-cover" />
       </div>
-      <div
-        class="absolute top-[18rem] h-[15rem] w-[18rem] left-[2.7rem] ">
-        <h2 class="mt-[1.5rem] text-white font-bold text-center text-4xl">
-          Berlin,germany
-        </h2>
-        <p class="text-white text-xl text-center mt-[0.5rem]">
-          Tuesday, Aug 5, 2025
-        </p>
-        <div class="flex h-[7rem] justify-between p-4">
-          <div class="mt-[1rem]">
+      <div class="absolute top-68  md:top-64 left-4 right-4 p-8 md:w-[40rem]  md:flex md:justify-between">
+        <div class="md:ml-6">
+          <h2 id="location" class="mt-4 text-white font-bold text-center text-2xl md:text-3xl lg:text-4xl">
+            Berlin, Germany
+          </h2>
+          <p id="date" class="text-white text-lg md:text-xl text-center mt-2">
+            Tuesday, Aug 5, 2025
+          </p>
+        </div>
+        <div class="flex flex-row md:flex-row  h-auto md:h-28 justify-center items-center p-4 gap-4">
+          <div class="flex justify-center">
             <img
+              id="weather-icon"
               src="./assets/images/icon-sunny.webp"
-              alt=""
-              class="h-[5rem] w-[5rem]" />
+              alt="Weather Icon"
+              class="h-16 w-16 md:h-20 md:w-20" />
           </div>
-          <div
-            class="w-[6rem] h-[6rem] mt-[-1rem] font-bold text-center text-white text-[4rem]">
+          <div id="temperature" class="font-bold text-center text-white text-4xl md:text-5xl lg:text-6xl">
             68°
           </div>
         </div>
       </div>
-      <div class="md:flex flex-row">
 
-        <div
-          class="mt-4 h-[12rem] gap-4 text-white items-center justify-center grid grid-cols-2  p-4">
-          <div class=" p-2 w-[8rem] rounded-md bg-[#3d3b5eff] h-[5rem]">
-            <p>feels like</p>
-            <h2>64°</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-8">
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-white">
+            <div class="p-3 rounded-md bg-[#3d3b5eff] text-center">
+              <p class="text-sm">Feels like</p>
+              <h2 id="feels-like" class="text-lg font-bold">64°</h2>
+            </div>
+            <div class="p-3 rounded-md bg-[#3d3b5eff] text-center">
+              <p class="text-sm">Humidity</p>
+              <h2 id="humidity" class="text-lg font-bold">64%</h2>
+            </div>
+            <div class="p-3 rounded-md bg-[#3d3b5eff] text-center">
+              <p class="text-sm">Wind</p>
+              <h2 id="wind" class="text-lg font-bold">9 mph</h2>
+            </div>
+            <div class="p-3 rounded-md bg-[#3d3b5eff] text-center">
+              <p class="text-sm">Precipitation</p>
+              <h2 id="precipitation" class="text-lg font-bold">0 in</h2>
+            </div>
           </div>
-          <div class=" p-2 w-[8rem] rounded-md bg-[#3d3b5eff] h-[5rem]">
-            <p>Humidity</p>
-            <h2>64%</h2>
-          </div>
-          <div class=" p-2 w-[8rem] rounded-md bg-[#3d3b5eff] h-[5rem]">
-            <p>Wind</p>
-            <h2>9 mph</h2>
-          </div>
-          <div class=" p-2 w-[8rem] rounded-md bg-[#3d3b5eff] h-[5rem]">
-            <p>Precipitation</p>
-            <h2><b>0</b> in</h2>
-          </div>
-        </div>
-        <div class="p-2">
           <div>
-            <h2 class=" mt-2 text-xl text-white" >Daily forecast</h2>
-          </div>
-          <div class="h-[30rem] mt-2 gap-2 p-2 grid grid-cols-3">
-            <div class="bg-[#3d3b5eff] text-white w-[6rem] rounded-md h-[9rem] p-2">
-              <p>Tue</p>
-              <div class="w-[3rem] h-[3rem] m-auto">
-                <img src="./assets/images/icon-rain.webp" alt="">
+            <h2 class="text-xl text-white mb-2">Daily forecast</h2>
+            <div id="daily-forecast" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2">
+              <div class="bg-[#3d3b5eff] text-white rounded-md p-2 text-center">
+                <p class="text-sm">Tue</p>
+                <img src="./assets/images/icon-rain.webp" alt="Rain" class="w-8 h-8 mx-auto my-1">
+                <div class="flex justify-between text-xs">
+                  <span>68°</span>
+                  <span>57°</span>
+                </div>
               </div>
-              <div class="flex justify-between mt-[1rem]">
-                <div class="w-[2rem] h-[2rem] ">68°</div>
-                <div class="w-[2rem] h-[2rem] ">57°</div>
+              <div class="bg-[#3d3b5eff] text-white rounded-md p-2 text-center">
+                <p class="text-sm">Wed</p>
+                <img src="./assets/images/icon-drizzle.webp" alt="Drizzle" class="w-8 h-8 mx-auto my-1">
+                <div class="flex justify-between text-xs">
+                  <span>70°</span>
+                  <span>59°</span>
+                </div>
               </div>
-            </div>
-            <div class="bg-[#3d3b5eff] text-white w-[6rem] rounded-md p-2 h-[9rem]">
-              <p>Wed</p>
-              <div class="w-[3rem] h-[3rem] m-auto">
-                <img src="./assets/images/icon-drizzle.webp" alt="">
+              <div class="bg-[#3d3b5eff] text-white rounded-md p-2 text-center">
+                <p class="text-sm">Thu</p>
+                <img src="./assets/images/icon-sunny.webp" alt="Sunny" class="w-8 h-8 mx-auto my-1">
+                <div class="flex justify-between text-xs">
+                  <span>75°</span>
+                  <span>57°</span>
+                </div>
               </div>
-              <div class="flex justify-between mt-[1rem]">
-                <div class="w-[2rem] h-[2rem] ">70°</div>
-                <div class="w-[2rem] h-[2rem] ">59°</div>
+              <div class="bg-[#3d3b5eff] text-white rounded-md p-2 text-center">
+                <p class="text-sm">Fri</p>
+                <img src="./assets/images/icon-partly-cloudy.webp" alt="Partly Cloudy" class="w-8 h-8 mx-auto my-1">
+                <div class="flex justify-between text-xs">
+                  <span>77°</span>
+                  <span>55°</span>
+                </div>
               </div>
-            </div>
-            <div class="bg-[#3d3b5eff] text-white w-[6rem] rounded-md p-2 h-[9rem]">
-              <p>Thu</p>
-              <div class="w-[3rem] h-[3rem] m-auto">
-                <img src="./assets/images/icon-sunny.webp" alt="">
+              <div class="bg-[#3d3b5eff] text-white rounded-md p-2 text-center">
+                <p class="text-sm">Sat</p>
+                <img src="./assets/images/icon-storm.webp" alt="Storm" class="w-8 h-8 mx-auto my-1">
+                <div class="flex justify-between text-xs">
+                  <span>70°</span>
+                  <span>59°</span>
+                </div>
               </div>
-              <div class="flex justify-between mt-[1rem]">
-                <div class="w-[2rem] h-[2rem] ">75°</div>
-                <div class="w-[2rem] h-[2rem] ">57°</div>
+              <div class="bg-[#3d3b5eff] text-white rounded-md p-2 text-center">
+                <p class="text-sm">Sun</p>
+                <img src="./assets/images/icon-snow.webp" alt="Snow" class="w-8 h-8 mx-auto my-1">
+                <div class="flex justify-between text-xs">
+                  <span>77°</span>
+                  <span>61°</span>
+                </div>
               </div>
-            </div>
-            <div class="bg-[#3d3b5eff] text-white w-[6rem] rounded-md p-2 h-[9rem]">
-              <p>Fri</p>
-              <div class="w-[3rem] h-[3rem] m-auto">
-                <img src="./assets/images/icon-partly-cloudy.webp" alt="">
-              </div>
-              <div class="flex justify-between mt-[1rem]">
-                <div class="w-[2rem] h-[2rem] ">77°</div>
-                <div class="w-[2rem] h-[2rem] ">55°</div>
-              </div>
-            </div>
-            <div class="bg-[#3d3b5eff] text-white w-[6rem] rounded-md p-2 h-[9rem]">
-              <p>Sat</p>
-              <div class="w-[3rem] h-[3rem] m-auto">
-                <img src="./assets/images/icon-storm.webp" alt="">
-              </div>
-              <div class="flex justify-between mt-[1rem]">
-                <div class="w-[2rem] h-[2rem] ">70°</div>
-                <div class="w-[2rem] h-[2rem] ">59°</div>
-              </div>
-            </div>
-            <div class="bg-[#3d3b5eff] text-white w-[6rem] rounded-md p-2 h-[9rem]">
-              <p>Sun</p>
-              <div class="w-[3rem] h-[3rem] m-auto">
-                <img src="./assets/images/icon-snow.webp" alt="">
-              </div>
-              <div class="flex justify-between mt-[1rem]">
-                <div class="w-[2rem] h-[2rem] ">77°</div>
-                <div class="w-[2rem] h-[2rem] ">61°</div>
-              </div>
-            </div>
-            <div class="bg-[#3d3b5eff] text-white w-[6rem] rounded-md p-2 h-[9rem]">
-              <p>Mon</p>
-              <div class="w-[3rem] h-[3rem] m-auto">
-                <img src="./assets/images/icon-fog.webp" alt="">
-              </div>
-              <div class="flex justify-between mt-[1rem]">
-                <div class="w-[2rem] h-[2rem] ">75°</div>
-                <div class="w-[2rem] h-[2rem] ">59°</div>
+              <div class="bg-[#3d3b5eff] text-white rounded-md p-2 text-center">
+                <p class="text-sm">Mon</p>
+                <img src="./assets/images/icon-fog.webp" alt="Fog" class="w-8 h-8 mx-auto my-1">
+                <div class="flex justify-between text-xs">
+                  <span>75°</span>
+                  <span>59°</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        
-        <div class="bg-[#312f4bff] mt-2 rounded-md pt-4">
-          <div class="p-2">
-            <p class="text-white">Hourly forecast</p>
-          </div>
-          <div class="mt-2 p-2 flex flex-col gap-4">
-            <div class="h-[4rem] bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
-              <div class="w-[4rem] h-[3rem]">
-                <img src="./assets/images/icon-overcast.webp" alt="">
+
+        <div class="bg-[#312f4bff] md:w-[25rem] md:ml-[6rem] md:mt-[-18rem] rounded-md p-4 mt-4">
+          <h2 class="text-white text-lg mb-4">Hourly forecast</h2>
+          <div id="hourly-forecast" class="space-y-2  overflow-y-auto">
+            <div class="h-16 bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="./assets/images/icon-overcast.webp" alt="Overcast" class="w-full h-full object-cover">
               </div>
-              <div class="flex p-1 items-center h-[3rem] w-full justify-between">
+              <div class="flex items-center justify-between w-full">
                 <div class="text-white">3pm</div>
                 <div class="text-white">68°</div>
               </div>
             </div>
-            <div class="h-[4rem] bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
-              <div class="w-[4rem] h-[3rem]">
-                <img src="./assets/images/icon-partly-cloudy.webp" alt="">
+            <div class="h-16 bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="./assets/images/icon-partly-cloudy.webp" alt="Partly Cloudy" class="w-full h-full object-cover">
               </div>
-              <div class="flex p-1 items-center h-[3rem] w-full justify-between">
+              <div class="flex items-center justify-between w-full">
                 <div class="text-white">4pm</div>
                 <div class="text-white">68°</div>
               </div>
             </div>
-            <div class="h-[4rem] bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
-              <div class="w-[4rem] h-[3rem]">
-                <img src="./assets/images/icon-sunny.webp" alt="">
+            <div class="h-16 bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="./assets/images/icon-sunny.webp" alt="Sunny" class="w-full h-full object-cover">
               </div>
-              <div class="flex p-1 items-center h-[3rem] w-full justify-between">
+              <div class="flex items-center justify-between w-full">
                 <div class="text-white">5pm</div>
                 <div class="text-white">68°</div>
               </div>
             </div>
-            <div class="h-[4rem] bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
-              <div class="w-[4rem] h-[3rem]">
-                <img src="./assets/images/icon-overcast.webp" alt="">
+            <div class="h-16 bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="./assets/images/icon-overcast.webp" alt="Overcast" class="w-full h-full object-cover">
               </div>
-              <div class="flex p-1 items-center h-[3rem] w-full justify-between">
+              <div class="flex items-center justify-between w-full">
                 <div class="text-white">6pm</div>
                 <div class="text-white">66°</div>
               </div>
             </div>
-            <div class="h-[4rem] bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
-              <div class="w-[4rem] h-[3rem]">
-                <img src="./assets/images/icon-snow.webp" alt="">
+            <div class="h-16 bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="./assets/images/icon-snow.webp" alt="Snow" class="w-full h-full object-cover">
               </div>
-              <div class="flex p-1 items-center h-[3rem] w-full justify-between">
+              <div class="flex items-center justify-between w-full">
                 <div class="text-white">7pm</div>
                 <div class="text-white">66°</div>
               </div>
             </div>
-            <div class="h-[4rem] bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
-              <div class="w-[4rem] h-[3rem]">
-                <img src="./assets/images/icon-fog.webp" alt="">
+            <div class="h-16 bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="./assets/images/icon-fog.webp" alt="Fog" class="w-full h-full object-cover">
               </div>
-              <div class="flex p-1 items-center h-[3rem] w-full justify-between">
+              <div class="flex items-center justify-between w-full">
                 <div class="text-white">8pm</div>
                 <div class="text-white">64°</div>
               </div>
             </div>
-            <div class="h-[4rem] bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
-              <div class="w-[4rem] h-[3rem]">
-                <img src="./assets/images/icon-snow.webp" alt="">
+            <div class="h-16 bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="./assets/images/icon-snow.webp" alt="Snow" class="w-full h-full object-cover">
               </div>
-              <div class="flex p-1 items-center h-[3rem] w-full justify-between">
+              <div class="flex items-center justify-between w-full">
                 <div class="text-white">9pm</div>
                 <div class="text-white">63°</div>
               </div>
             </div>
-            <div class="h-[4rem] bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
-              <div class="w-[4rem] h-[3rem]">
-                <img src="./assets/images/icon-overcast.webp" alt="">
+            <div class="h-16 bg-[#3d3b5eff] gap-2 flex p-2 rounded-md">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="./assets/images/icon-overcast.webp" alt="Overcast" class="w-full h-full object-cover">
               </div>
-              <div class="flex p-1 items-center h-[3rem] w-full justify-between">
+              <div class="flex items-center justify-between w-full">
                 <div class="text-white">10pm</div>
                 <div class="text-white">63°</div>
               </div>
@@ -247,5 +230,253 @@
         </div>
       </div>
     </div>
+
+
+
+
+    <script>
+      // This is the JavaScript code for the weather app.
+      // It handles getting weather data from an API and updating the webpage.
+
+      // First, we get references to the HTML elements we will change.
+      // These are like pointers to the parts of the page we want to update.
+      var searchInput = document.getElementById('search-input'); // The text box for searching places
+      var searchButton = document.getElementById('search-button'); // The search button
+      var unitsSelect = document.getElementById('units'); // The dropdown for Celsius or Fahrenheit
+      var locationElement = document.getElementById('location'); // Where the city name is shown
+      var dateElement = document.getElementById('date'); // Where the current date is shown
+      var tempElement = document.querySelector('.font-bold.text-center.text-white.text-4xl.md\\:text-5xl.lg\\:text-6xl'); // The main temperature display
+      var weatherIcon = document.querySelector('.flex.justify-center img[alt="Weather Icon"]'); // The weather icon image
+      var feelsLikeElement = document.getElementById('feels-like'); // Feels like temperature
+      var humidityElement = document.getElementById('humidity'); // Humidity percentage
+      var windElement = document.getElementById('wind'); // Wind speed
+      var precipitationElement = document.getElementById('precipitation'); // Precipitation amount
+      var dailyForecastContainer = document.getElementById('daily-forecast'); // Container for daily forecast
+      var hourlyForecastContainer = document.getElementById('hourly-forecast'); // Container for hourly forecast
+
+      // Variables to store the current location and units.
+      // We start with Berlin as default.
+      var currentLocation = {
+        latitude: 52.52,
+        longitude: 13.41,
+        name: 'Berlin, Germany'
+      };
+      var currentUnits = 'celsius'; // Can be 'celsius' or 'fahrenheit'
+
+      // A list that maps weather codes from the API to icon file names.
+      // Weather codes are numbers that represent different weather conditions.
+      var weatherIcons = {
+        0: 'icon-sunny.webp', // Clear sky
+        1: 'icon-partly-cloudy.webp', // Mainly clear
+        2: 'icon-partly-cloudy.webp', // Partly cloudy
+        3: 'icon-overcast.webp', // Overcast
+        45: 'icon-fog.webp', // Fog
+        48: 'icon-fog.webp', // Depositing rime fog
+        51: 'icon-drizzle.webp', // Light drizzle
+        53: 'icon-drizzle.webp', // Moderate drizzle
+        55: 'icon-drizzle.webp', // Dense drizzle
+        56: 'icon-drizzle.webp', // Light freezing drizzle
+        57: 'icon-drizzle.webp', // Dense freezing drizzle
+        61: 'icon-rain.webp', // Slight rain
+        63: 'icon-rain.webp', // Moderate rain
+        65: 'icon-rain.webp', // Heavy rain
+        66: 'icon-rain.webp', // Light freezing rain
+        67: 'icon-rain.webp', // Heavy freezing rain
+        71: 'icon-snow.webp', // Slight snow fall
+        73: 'icon-snow.webp', // Moderate snow fall
+        75: 'icon-snow.webp', // Heavy snow fall
+        77: 'icon-snow.webp', // Snow grains
+        80: 'icon-rain.webp', // Slight rain showers
+        81: 'icon-rain.webp', // Moderate rain showers
+        82: 'icon-rain.webp', // Violent rain showers
+        85: 'icon-snow.webp', // Slight snow showers
+        86: 'icon-snow.webp', // Heavy snow showers
+        95: 'icon-storm.webp', // Thunderstorm
+        96: 'icon-storm.webp', // Thunderstorm with slight hail
+        99: 'icon-storm.webp' // Thunderstorm with heavy hail
+      };
+
+      // Function to get the correct icon file name based on weather code
+      function getWeatherIcon(code) {
+        // If the code is in our list, use it; otherwise, use sunny as default
+        return './assets/images/' + (weatherIcons[code] || 'icon-sunny.webp');
+      }
+
+      // Function to convert temperature from Celsius to Fahrenheit if needed
+      function convertTemp(temp, toFahrenheit) {
+        if (toFahrenheit) {
+          // Formula: Celsius to Fahrenheit is (C * 9/5) + 32, then round to nearest whole number
+          return Math.round((temp * 9 / 5) + 32);
+        }
+        // If not converting, just round the Celsius value
+        return Math.round(temp);
+      }
+
+      // Function to convert wind speed from km/h to mph if needed
+      function convertWindSpeed(speed, toMph) {
+        if (toMph) {
+          // Formula: km/h to mph is km/h * 0.621371, then round
+          return Math.round(speed * 0.621371);
+        }
+        // If not converting, just round the km/h value
+        return Math.round(speed);
+      }
+
+      // Function to convert precipitation from mm to inches if needed
+      function convertPrecipitation(precip, toInches) {
+        if (toInches) {
+          // Formula: mm to inches is mm * 0.0393701, then show 2 decimal places
+          return (precip * 0.0393701).toFixed(2);
+        }
+        // If not converting, show 1 decimal place
+        return precip.toFixed(1);
+      }
+
+      // Function to get weather data from the API
+      // This uses 'async' and 'await' which means it waits for the data without freezing the page
+      async function fetchWeather(latitude, longitude) {
+        // Build the URL for the API request
+        var units = currentUnits === 'fahrenheit' ? '&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch' : '';
+        var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto' + units;
+
+        // Fetch the data from the URL
+        var response = await fetch(url);
+        // Convert the response to JSON (JavaScript Object)
+        var data = await response.json();
+        // Return the data so other functions can use it
+        return data;
+      }
+
+      // Function to update the webpage with the weather data
+      function updateUI(data) {
+        // Get the current weather data from the API response
+        var current = data.current;
+        var daily = data.daily;
+        var hourly = data.hourly;
+
+        // Update the location name on the page
+        locationElement.textContent = currentLocation.name;
+
+        // Update the date to today's date
+        var now = new Date();
+        dateElement.textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        // Update the main temperature display
+        tempElement.textContent = convertTemp(current.temperature_2m, currentUnits === 'fahrenheit') + '°';
+
+        // Update the weather icon
+        weatherIcon.src = getWeatherIcon(current.weather_code);
+
+        // Update the 'feels like' temperature
+        feelsLikeElement.textContent = convertTemp(current.apparent_temperature, currentUnits === 'fahrenheit') + '°';
+
+        // Update humidity
+        humidityElement.textContent = current.relative_humidity_2m + '%';
+
+        // Update wind speed with units
+        windElement.textContent = convertWindSpeed(current.wind_speed_10m, currentUnits === 'fahrenheit') + ' ' + (currentUnits === 'fahrenheit' ? 'mph' : 'km/h');
+
+        // Update precipitation with units
+        precipitationElement.textContent = convertPrecipitation(current.precipitation, currentUnits === 'fahrenheit') + ' ' + (currentUnits === 'fahrenheit' ? 'in' : 'mm');
+
+        // Clear the daily forecast container and add new data
+        dailyForecastContainer.innerHTML = '';
+        for (var i = 0; i < 7; i++) { // Loop for 7 days
+          // Create a new div for each day
+          var dayDiv = document.createElement('div');
+          dayDiv.className = 'bg-[#3d3b5eff] text-white rounded-md p-2 text-center';
+
+          // Get the day name (like 'Mon', 'Tue')
+          var dayName = new Date(daily.time[i]).toLocaleDateString('en-US', { weekday: 'short' });
+
+          // Set the HTML content for the day div
+          dayDiv.innerHTML = '<p class="text-sm">' + dayName + '</p>' +
+            '<img src="' + getWeatherIcon(daily.weather_code[i]) + '" alt="' + dayName + '" class="w-8 h-8 mx-auto my-1">' +
+            '<div class="flex justify-between text-xs">' +
+              '<span>' + convertTemp(daily.temperature_2m_max[i], currentUnits === 'fahrenheit') + '°</span>' +
+              '<span>' + convertTemp(daily.temperature_2m_min[i], currentUnits === 'fahrenheit') + '°</span>' +
+            '</div>';
+
+          // Add the day div to the container
+          dailyForecastContainer.appendChild(dayDiv);
+        }
+
+        // Clear the hourly forecast container and add new data
+        hourlyForecastContainer.innerHTML = '';
+        for (var i = 0; i < 10; i++) { // Loop for 10 hours
+          // Create a new div for each hour
+          var hourDiv = document.createElement('div');
+          hourDiv.className = 'h-16 bg-[#3d3b5eff] gap-2 flex p-2 rounded-md';
+
+          // Get the time (like '3pm')
+          var time = new Date(hourly.time[i]).toLocaleTimeString('en-US', { hour: 'numeric', hour12: true });
+
+          // Set the HTML content for the hour div
+          hourDiv.innerHTML = '<div class="w-12 h-12 flex-shrink-0">' +
+            '<img src="' + getWeatherIcon(hourly.weather_code[i]) + '" alt="' + time + '" class="w-full h-full object-cover">' +
+            '</div>' +
+            '<div class="flex items-center justify-between w-full">' +
+              '<div class="text-white">' + time + '</div>' +
+              '<div class="text-white">' + convertTemp(hourly.temperature_2m[i], currentUnits === 'fahrenheit') + '°</div>' +
+            '</div>';
+
+          // Add the hour div to the container
+          hourlyForecastContainer.appendChild(hourDiv);
+        }
+      }
+
+      // Function to search for a location and get its weather
+      async function searchLocation(query) {
+        // Build the URL for the geocoding API (to find latitude and longitude from place name)
+        var url = 'https://geocoding-api.open-meteo.com/v1/search?name=' + encodeURIComponent(query) + '&count=1&language=en&format=json';
+
+        // Fetch the location data
+        var response = await fetch(url);
+        var data = await response.json();
+
+        // Check if we found a result
+        if (data.results && data.results.length > 0) {
+          var result = data.results[0];
+          currentLocation = {
+            latitude: result.latitude,
+            longitude: result.longitude,
+            name: result.name + ', ' + result.country
+          };
+          var weatherData = await fetchWeather(result.latitude, result.longitude);
+          updateUI(weatherData);
+        } else {
+          alert('Location not found. Please try again.');
+        }
+      }
+
+      // Event listeners - these listen for user actions
+      searchButton.addEventListener('click', function() {
+        var query = searchInput.value.trim();
+        if (query) {
+          searchLocation(query);
+        }
+      });
+
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          var query = searchInput.value.trim();
+          if (query) {
+            searchLocation(query);
+          }
+        }
+      });
+
+      unitsSelect.addEventListener('change', async function() {
+        currentUnits = unitsSelect.value;
+        var weatherData = await fetchWeather(currentLocation.latitude, currentLocation.longitude);
+        updateUI(weatherData);
+      });
+
+      // When the page loads, get the weather for the default location
+      window.addEventListener('load', async function() {
+        var weatherData = await fetchWeather(currentLocation.latitude, currentLocation.longitude);
+        updateUI(weatherData);
+      });
+    </script>
   </body>
 </html>
